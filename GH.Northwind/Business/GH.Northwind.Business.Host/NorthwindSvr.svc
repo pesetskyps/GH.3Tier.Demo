@@ -1,0 +1,2 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="GH.Northwind.Business.NorthwindSvr" %>
+<%@ Assembly Name="GH.Northwind.Business" %>
