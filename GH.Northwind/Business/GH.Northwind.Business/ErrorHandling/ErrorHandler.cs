@@ -5,13 +5,14 @@ using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 using GH.Northwind.Business.Entities.Exceptions;
+using log4net;
 
 namespace GH.Northwind.Business.ErrorHandling
 {
     public class ErrorHandler : IErrorHandler, IServiceBehavior
     {
         #region IErrorHandler Members
-
+        private static readonly ILog log = LogManager.GetLogger(typeof(ErrorHandler));
         public bool HandleError(Exception error)
         {
             return true;
@@ -20,6 +21,7 @@ namespace GH.Northwind.Business.ErrorHandling
         public void ProvideFault(Exception error, MessageVersion version, ref Message fault)
         {
             if (error is FaultException) return;
+            log.Error(error);
             BusinessServiceException businessFault = new BusinessServiceException(error);
             FaultException<BusinessServiceException> faultEx =
                 new FaultException<BusinessServiceException>(businessFault, "Error occurs in business service",

@@ -45,7 +45,6 @@ namespace NorthWind.console
             // Open the ServiceHostBase to create listeners and start 
             // listening for messages.
             serviceHost.Open();
-            File.Create("c:\\temp\\bbbbb.txt");
             log.Debug(string.Format("Service {0} is started", ServiceName));
         }
         protected override void OnStop()
