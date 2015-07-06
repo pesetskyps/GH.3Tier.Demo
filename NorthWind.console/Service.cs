@@ -7,7 +7,7 @@ namespace NorthWind.console
 {
     class Service
     {
-        //testmaster33333_bamboo
+        //testmaster33333_bambooff
         //static void Main(string[] args)
         //{
         //    ServiceHost svcHost = null;
