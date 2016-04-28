@@ -8,6 +8,7 @@ node('remote') {
 	}
 	catch(err) {
 		currentBuild.result = 'FAILURE'
+		throw err
 		//bat('git rev-parse HEAD > GIT_COMMIT')
 		//git_commit=readFile('GIT_COMMIT')
 		//short_commit=git_commit.take(6)
