@@ -1,17 +1,7 @@
 //try{
 stage 'build'
 node('remote') {
-	checkout scm: [$class: 'GitSCM', 
-		branches: [[name: '*/new']], 
-		userRemoteConfigs: [
-			[
-				url: 'https://github.com/pesetskyps/GH.3Tier.Demo.git',
-				credentialsId: '2a536c43-287a-4bbe-aae6-092b2729e9e3'
-			]
-		]
-	]
-
-	try {
+		try {
 		bat("C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\Msbuild.exe GH.NTier.Demo.sln")
 		stash includes: 'GH.Northwind.UnitTest/bin/Debug/**', name: 'unit_tests'
 		stash includes: 'IntegrationTests/bin/Debug/**', name: 'integration_tests'
