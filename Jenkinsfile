@@ -1,4 +1,4 @@
-//try{
+try{
 stage 'build'
 node('remote') {
 		try {
@@ -64,10 +64,10 @@ parallel (
 		}
 	}
 )
-//}
-//catch (err){
-//	bat("echo 'hell catch'")
-//}
+}
+catch (err){
+	bat("echo 'hell catch'")
+}
 //
 //def TrimEndOfLine($email_recepients)
 //{
