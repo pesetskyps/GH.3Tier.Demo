@@ -69,7 +69,7 @@ parallel (
 )
 }
 catch (err){
-	bat("echo 'hell catch'")
+	echo "blaaa"
 }
 //
 //def TrimEndOfLine($email_recepients)
