@@ -30,6 +30,7 @@ parallel (
 			catch(err) {
 				echo "${err}"
 				currentBuild.result = 'FAILURE'
+				throw err
 			}
 			finally {
 				step([$class: 'XUnitPublisher', testTimeMargin: '3000', thresholdMode: 1, 
@@ -50,6 +51,7 @@ parallel (
 			catch (err){
 					echo "Exception thrown:\n ${err}"
 				currentBuild.result = 'FAILURE'
+				throw err
 			}
 			finally {
 				step([$class: 'XUnitPublisher', testTimeMargin: '3000', thresholdMode: 1, 
