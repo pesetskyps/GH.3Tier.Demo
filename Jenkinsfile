@@ -21,7 +21,8 @@ node('remote') {
 		bat("C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy Bypass -File d:\\Dropbox\\plex\\scripts\\prepare_email.ps1 ${short_commit} \"${env.JENKINS_HOME}\" -rootUrl ${env.JENKINS_URL} -buildUrl ${env.BUILD_URL} -ProjectName ${env.JOB_NAME} -BuildResult \"FAILURE\"")
 		$email_recepients = TrimEndOfLine(readFile("email_recepient_${short_commit}"))
 		echo $email_recepients
-		emailext body: "${readFile("email_template_${short_commit}")}", subject: "${env.JOB_NAME} FAILED for commit ${short_commit}", to: "${TrimEndOfLine(readFile("email_recepient_${short_commit}"))}", replyTo: 'jenkins@plexdev.io', mimeType: 'text/html', attachLog: true
+		//"${TrimEndOfLine(readFile("email_recepient_${short_commit}"))}
+		emailext body: "${readFile("email_template_${short_commit}")}", subject: "${env.JOB_NAME} FAILED for commit ${short_commit}", to: "pavel_pesetskiy@epam.com", replyTo: 'jenkins@plexdev.io', mimeType: 'text/html', attachLog: true
 	}
 }
 
