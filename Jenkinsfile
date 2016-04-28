@@ -1,6 +1,7 @@
 try{
 stage 'build'
 node('remote') {
+	 	checkout scm
 		try {
 		bat("C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\Msbuild.exe GH.NTier.Demo.sln")
 		stash includes: 'GH.Northwind.UnitTest/bin/Debug/**', name: 'unit_tests'
