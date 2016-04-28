@@ -1,8 +1,10 @@
 try{
 stage 'build'
 node('remote') {
-	 	checkout scm
-		try {
+	checkout scm
+	try {
+		echo "getting the last commit to the branch"
+		bat('git rev-parse HEAD > GIT_COMMIT')
 		bat("C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\Msbuild.exe GH.NTier.Demo.sln")
 		stash includes: 'GH.Northwind.UnitTest/bin/Debug/**', name: 'unit_tests'
 		stash includes: 'IntegrationTests/bin/Debug/**', name: 'integration_tests'
@@ -10,7 +12,7 @@ node('remote') {
 	catch(err) {
 		currentBuild.result = 'FAILURE'
 		throw err
-		//bat('git rev-parse HEAD > GIT_COMMIT')
+		
 		//git_commit=readFile('GIT_COMMIT')
 		//short_commit=git_commit.take(6)
 //
