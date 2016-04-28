@@ -22,7 +22,7 @@ node('remote') {
 stage 'unit tests'
 parallel (
 	"unit tests" : { 
-		node ('master') {
+		node ('remote') {
 			unstash 'unit_tests'
 			try {
 				bat("d:\\Soft\\NUnit\\bin\\nunit-console.exe .\\GH.Northwind.UnitTest\\bin\\Debug\\GH.Northwind.UnitTest.dll /xml=.\\GH.Northwind.UnitTest.xml")
@@ -43,7 +43,7 @@ parallel (
 		}
 	},
 	"integration tests" : { 
-		node ('master') {
+		node ('remote') {
 			unstash 'integration_tests'
 			try {
 				bat("d:\\Soft\\NUnit\\bin\\nunit-console.exe .\\IntegrationTests\\bin\\Debug\\IntegrationTests.dll /xml=.\\IntegrationTests.xml")
