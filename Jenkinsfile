@@ -6,7 +6,7 @@ node('remote') {
 		stash includes: 'GH.Northwind.UnitTest/bin/Debug/**', name: 'unit_tests'
 		stash includes: 'IntegrationTests/bin/Debug/**', name: 'integration_tests'
 	}
-	catch($err) {
+	catch(err) {
 		//bat('git rev-parse HEAD > GIT_COMMIT')
 		//git_commit=readFile('GIT_COMMIT')
 		//short_commit=git_commit.take(6)
